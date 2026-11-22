@@ -416,3 +416,9 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Java practice build outputs
+*.class
+**/target/
+**/build/
+**/out/

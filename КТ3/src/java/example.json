@@ -1,0 +1,113 @@
+{
+  "products": [
+    {
+      "id": "P1",
+      "name": "Кабель учебный"
+    }
+  ],
+  "plans": [
+    {
+      "id": "CP1",
+      "name": "Демонстрационный план",
+      "revision": "1",
+      "document": "Учебный пример, не норматив изделия"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "R1",
+      "name": "Сопротивление жилы"
+    },
+    {
+      "id": "R2",
+      "name": "Сопротивление изоляции"
+    }
+  ],
+  "plan_requirements": [
+    {
+      "plan_id": "CP1",
+      "requirement_id": "R1",
+      "lower": 0,
+      "upper": 10,
+      "unit": "Ohm"
+    },
+    {
+      "plan_id": "CP1",
+      "requirement_id": "R2",
+      "lower": 100,
+      "upper": 1000,
+      "unit": "MOhm"
+    }
+  ],
+  "batches": [
+    {
+      "id": "B1",
+      "product_id": "P1",
+      "plan_id": "CP1",
+      "number": "2026-001"
+    }
+  ],
+  "samples": [
+    {
+      "id": "S1",
+      "batch_id": "B1",
+      "number": "1"
+    },
+    {
+      "id": "S2",
+      "batch_id": "B1",
+      "number": "2"
+    }
+  ],
+  "employees": [
+    {
+      "id": "E1",
+      "name": "Лаборант учебного примера",
+      "role": "operator"
+    },
+    {
+      "id": "E2",
+      "name": "Уполномоченный ОТК",
+      "role": "approver"
+    }
+  ],
+  "measurements": [
+    {
+      "id": "M1",
+      "sample_id": "S1",
+      "requirement_id": "R1",
+      "employee_id": "E1",
+      "value": 5,
+      "unit": "Ohm",
+      "measured_at": "2026-11-03T10:00:00+03:00"
+    },
+    {
+      "id": "M2",
+      "sample_id": "S1",
+      "requirement_id": "R2",
+      "employee_id": "E1",
+      "value": 200,
+      "unit": "MOhm",
+      "measured_at": "2026-11-03T10:00:00+03:00"
+    },
+    {
+      "id": "M3",
+      "sample_id": "S2",
+      "requirement_id": "R1",
+      "employee_id": "E1",
+      "value": 6,
+      "unit": "Ohm",
+      "measured_at": "2026-11-03T10:00:00+03:00"
+    },
+    {
+      "id": "M4",
+      "sample_id": "S2",
+      "requirement_id": "R2",
+      "employee_id": "E1",
+      "value": 250,
+      "unit": "MOhm",
+      "measured_at": "2026-11-03T10:00:00+03:00"
+    }
+  ],
+  "protocols": []
+}
