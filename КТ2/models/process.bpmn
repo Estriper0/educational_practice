@@ -1,300 +1,294 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions" targetNamespace="https://example.org/cable-acceptance">
-  <bpmn:process id="Process" name="Регистрация испытаний партии кабеля и решение о приёмке" isExecutable="false">
-    <bpmn:laneSet id="LaneSet">
-      <bpmn:lane id="master" name="Мастер производства">
-        <bpmn:flowNodeRef>start</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>submit</bpmn:flowNodeRef>
-      </bpmn:lane>
-      <bpmn:lane id="otk" name="Контролёр ОТК">
-        <bpmn:flowNodeRef>check</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>docs</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>wait</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>hold</bpmn:flowNodeRef>
-      </bpmn:lane>
-      <bpmn:lane id="lab" name="Лаборант">
-        <bpmn:flowNodeRef>sample</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>measure</bpmn:flowNodeRef>
-      </bpmn:lane>
-      <bpmn:lane id="system" name="Информационная система">
-        <bpmn:flowNodeRef>validate</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>evaluate</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>make</bpmn:flowNodeRef>
-      </bpmn:lane>
-      <bpmn:lane id="head" name="Уполномоченный ОТК">
-        <bpmn:flowNodeRef>review</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>approve</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>fix</bpmn:flowNodeRef>
-      </bpmn:lane>
-      <bpmn:lane id="store" name="Склад и производство">
-        <bpmn:flowNodeRef>send</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>end</bpmn:flowNodeRef>
-      </bpmn:lane>
-    </bpmn:laneSet>
-    <bpmn:startEvent id="start" name="Партия готова">
-      <bpmn:outgoing>Flow0</bpmn:outgoing>
-    </bpmn:startEvent>
-    <bpmn:userTask id="submit" name="Передать партию и документы">
-      <bpmn:incoming>Flow0</bpmn:incoming>
-      <bpmn:outgoing>Flow1</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:userTask id="check" name="Проверить документы и план">
-      <bpmn:incoming>Flow1</bpmn:incoming>
-      <bpmn:outgoing>Flow2</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:exclusiveGateway id="docs" name="Документы полны?">
-      <bpmn:incoming>Flow2</bpmn:incoming>
-      <bpmn:outgoing>Flow3</bpmn:outgoing>
-      <bpmn:outgoing>Flow5</bpmn:outgoing>
-    </bpmn:exclusiveGateway>
-    <bpmn:userTask id="wait" name="Запросить уточнение">
-      <bpmn:incoming>Flow3</bpmn:incoming>
-      <bpmn:outgoing>Flow4</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:endEvent id="hold" name="Ожидание уточнения">
-      <bpmn:incoming>Flow4</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:userTask id="sample" name="Зарегистрировать образцы">
-      <bpmn:incoming>Flow5</bpmn:incoming>
-      <bpmn:outgoing>Flow6</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:userTask id="measure" name="Выполнить испытания и ввести результаты">
-      <bpmn:incoming>Flow6</bpmn:incoming>
-      <bpmn:outgoing>Flow7</bpmn:outgoing>
-      <bpmn:incoming>Flow13</bpmn:incoming>
-    </bpmn:userTask>
-    <bpmn:serviceTask id="validate" name="Проверить формат результатов">
-      <bpmn:incoming>Flow7</bpmn:incoming>
-      <bpmn:outgoing>Flow8</bpmn:outgoing>
-    </bpmn:serviceTask>
-    <bpmn:serviceTask id="evaluate" name="Сопоставить результаты с планом">
-      <bpmn:incoming>Flow8</bpmn:incoming>
-      <bpmn:outgoing>Flow9</bpmn:outgoing>
-    </bpmn:serviceTask>
-    <bpmn:serviceTask id="make" name="Сформировать проект протокола">
-      <bpmn:incoming>Flow9</bpmn:incoming>
-      <bpmn:outgoing>Flow10</bpmn:outgoing>
-    </bpmn:serviceTask>
-    <bpmn:userTask id="review" name="Проверить проект протокола">
-      <bpmn:incoming>Flow10</bpmn:incoming>
-      <bpmn:outgoing>Flow11</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:exclusiveGateway id="approve" name="Решение утверждено?">
-      <bpmn:incoming>Flow11</bpmn:incoming>
-      <bpmn:outgoing>Flow12</bpmn:outgoing>
-      <bpmn:outgoing>Flow14</bpmn:outgoing>
-    </bpmn:exclusiveGateway>
-    <bpmn:userTask id="fix" name="Вернуть на уточнение">
-      <bpmn:incoming>Flow12</bpmn:incoming>
-      <bpmn:outgoing>Flow13</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:userTask id="send" name="Передать протокол и статус">
-      <bpmn:incoming>Flow14</bpmn:incoming>
-      <bpmn:outgoing>Flow15</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:endEvent id="end" name="Результат передан">
-      <bpmn:incoming>Flow15</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow0" sourceRef="start" targetRef="submit" name="" />
-    <bpmn:sequenceFlow id="Flow1" sourceRef="submit" targetRef="check" name="" />
-    <bpmn:sequenceFlow id="Flow2" sourceRef="check" targetRef="docs" name="" />
-    <bpmn:sequenceFlow id="Flow3" sourceRef="docs" targetRef="wait" name="Нет">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Нет</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow4" sourceRef="wait" targetRef="hold" name="" />
-    <bpmn:sequenceFlow id="Flow5" sourceRef="docs" targetRef="sample" name="Да">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Да</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow6" sourceRef="sample" targetRef="measure" name="" />
-    <bpmn:sequenceFlow id="Flow7" sourceRef="measure" targetRef="validate" name="" />
-    <bpmn:sequenceFlow id="Flow8" sourceRef="validate" targetRef="evaluate" name="" />
-    <bpmn:sequenceFlow id="Flow9" sourceRef="evaluate" targetRef="make" name="" />
-    <bpmn:sequenceFlow id="Flow10" sourceRef="make" targetRef="review" name="" />
-    <bpmn:sequenceFlow id="Flow11" sourceRef="review" targetRef="approve" name="" />
-    <bpmn:sequenceFlow id="Flow12" sourceRef="approve" targetRef="fix" name="Нет">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Нет</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow13" sourceRef="fix" targetRef="measure" name="" />
-    <bpmn:sequenceFlow id="Flow14" sourceRef="approve" targetRef="send" name="Да">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Да</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow15" sourceRef="send" targetRef="end" name="" />
-    <bpmn:dataObject id="objects1Data" name="Изделие; партия; версия плана; правила; виды проверок" />
-    <bpmn:dataObjectReference id="objects1" name="Изделие; партия; версия плана; правила; виды проверок" dataObjectRef="objects1Data" />
-    <bpmn:dataObject id="objects2Data" name="Образцы; сотрудники; измерения" />
-    <bpmn:dataObjectReference id="objects2" name="Образцы; сотрудники; измерения" dataObjectRef="objects2Data" />
-    <bpmn:dataObject id="objects3Data" name="Протокол и решение ОТК" />
-    <bpmn:dataObjectReference id="objects3" name="Протокол и решение ОТК" dataObjectRef="objects3Data" />
-    <bpmn:association id="Assoc0" sourceRef="objects1" targetRef="check" associationDirection="One" />
-    <bpmn:association id="Assoc1" sourceRef="measure" targetRef="objects2" associationDirection="One" />
-    <bpmn:association id="Assoc2" sourceRef="review" targetRef="objects3" associationDirection="One" />
-  </bpmn:process>
-  <bpmn:collaboration id="Collaboration">
-    <bpmn:participant id="Pool" name="Предприятие кабельного производства" processRef="Process" />
-  </bpmn:collaboration>
-  <bpmndi:BPMNDiagram id="Diagram">
-    <bpmndi:BPMNPlane id="Plane" bpmnElement="Collaboration">
-      <bpmndi:BPMNShape id="Pool_di" bpmnElement="Pool" isHorizontal="true">
-        <dc:Bounds x="10" y="55" width="1540" height="1060" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="master_di" bpmnElement="master" isHorizontal="true">
-        <dc:Bounds x="40" y="55" width="1510" height="150" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="otk_di" bpmnElement="otk" isHorizontal="true">
-        <dc:Bounds x="40" y="205" width="1510" height="190" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="lab_di" bpmnElement="lab" isHorizontal="true">
-        <dc:Bounds x="40" y="395" width="1510" height="170" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="system_di" bpmnElement="system" isHorizontal="true">
-        <dc:Bounds x="40" y="565" width="1510" height="230" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="head_di" bpmnElement="head" isHorizontal="true">
-        <dc:Bounds x="40" y="795" width="1510" height="170" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="store_di" bpmnElement="store" isHorizontal="true">
-        <dc:Bounds x="40" y="965" width="1510" height="150" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="start_di" bpmnElement="start">
-        <dc:Bounds x="120" y="110" width="55" height="55" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="submit_di" bpmnElement="submit">
-        <dc:Bounds x="260" y="105" width="200" height="70" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="check_di" bpmnElement="check">
-        <dc:Bounds x="500" y="260" width="210" height="70" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="docs_di" bpmnElement="docs">
-        <dc:Bounds x="770" y="245" width="160" height="100" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="wait_di" bpmnElement="wait">
-        <dc:Bounds x="1030" y="260" width="190" height="70" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="hold_di" bpmnElement="hold">
-        <dc:Bounds x="1330" y="270" width="55" height="55" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="sample_di" bpmnElement="sample">
-        <dc:Bounds x="500" y="440" width="210" height="70" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="measure_di" bpmnElement="measure">
-        <dc:Bounds x="780" y="440" width="230" height="70" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="validate_di" bpmnElement="validate">
-        <dc:Bounds x="780" y="620" width="230" height="70" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="evaluate_di" bpmnElement="evaluate">
-        <dc:Bounds x="490" y="620" width="240" height="70" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="make_di" bpmnElement="make">
-        <dc:Bounds x="200" y="620" width="240" height="70" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="review_di" bpmnElement="review">
-        <dc:Bounds x="200" y="840" width="240" height="70" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="approve_di" bpmnElement="approve">
-        <dc:Bounds x="520" y="825" width="170" height="100" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="fix_di" bpmnElement="fix">
-        <dc:Bounds x="820" y="845" width="190" height="70" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="send_di" bpmnElement="send">
-        <dc:Bounds x="200" y="1000" width="240" height="70" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="end_di" bpmnElement="end">
-        <dc:Bounds x="570" y="1005" width="55" height="55" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="objects1_di" bpmnElement="objects1">
-        <dc:Bounds x="350" y="345" width="400" height="35" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="objects2_di" bpmnElement="objects2">
-        <dc:Bounds x="1030" y="490" width="400" height="35" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="objects3_di" bpmnElement="objects3">
-        <dc:Bounds x="1030" y="910" width="400" height="35" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow0_di" bpmnElement="Flow0">
-        <di:waypoint x="175" y="137.5" />
-        <di:waypoint x="260" y="140.0" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow1_di" bpmnElement="Flow1">
-        <di:waypoint x="460" y="140" />
-        <di:waypoint x="605" y="140" />
-        <di:waypoint x="605" y="260" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow2_di" bpmnElement="Flow2">
-        <di:waypoint x="710" y="295.0" />
-        <di:waypoint x="770" y="295.0" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow3_di" bpmnElement="Flow3">
-        <di:waypoint x="930" y="295.0" />
-        <di:waypoint x="1030" y="295.0" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow4_di" bpmnElement="Flow4">
-        <di:waypoint x="1220" y="295.0" />
-        <di:waypoint x="1330" y="297.5" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow5_di" bpmnElement="Flow5">
-        <di:waypoint x="850" y="345" />
-        <di:waypoint x="850" y="370" />
-        <di:waypoint x="605" y="370" />
-        <di:waypoint x="605" y="440" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow6_di" bpmnElement="Flow6">
-        <di:waypoint x="710" y="475.0" />
-        <di:waypoint x="780" y="475.0" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow7_di" bpmnElement="Flow7">
-        <di:waypoint x="895" y="510" />
-        <di:waypoint x="895" y="620" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow8_di" bpmnElement="Flow8">
-        <di:waypoint x="780" y="655" />
-        <di:waypoint x="730" y="655" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow9_di" bpmnElement="Flow9">
-        <di:waypoint x="490" y="655" />
-        <di:waypoint x="440" y="655" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow10_di" bpmnElement="Flow10">
-        <di:waypoint x="320" y="690" />
-        <di:waypoint x="320" y="840" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow11_di" bpmnElement="Flow11">
-        <di:waypoint x="440" y="875.0" />
-        <di:waypoint x="520" y="875.0" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow12_di" bpmnElement="Flow12">
-        <di:waypoint x="690" y="875.0" />
-        <di:waypoint x="820" y="880.0" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow13_di" bpmnElement="Flow13">
-        <di:waypoint x="1010" y="880" />
-        <di:waypoint x="1480" y="880" />
-        <di:waypoint x="1480" y="475" />
-        <di:waypoint x="1010" y="475" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow14_di" bpmnElement="Flow14">
-        <di:waypoint x="605" y="925" />
-        <di:waypoint x="605" y="950" />
-        <di:waypoint x="320" y="950" />
-        <di:waypoint x="320" y="1000" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow15_di" bpmnElement="Flow15">
-        <di:waypoint x="440" y="1035.0" />
-        <di:waypoint x="570" y="1032.5" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Assoc0_di" bpmnElement="Assoc0">
-        <di:waypoint x="550.0" y="345" />
-        <di:waypoint x="605.0" y="330" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Assoc1_di" bpmnElement="Assoc1">
-        <di:waypoint x="895.0" y="440" />
-        <di:waypoint x="1230.0" y="525" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Assoc2_di" bpmnElement="Assoc2">
-        <di:waypoint x="320.0" y="840" />
-        <di:waypoint x="1230.0" y="945" />
-      </bpmndi:BPMNEdge>
-    </bpmndi:BPMNPlane>
-  </bpmndi:BPMNDiagram>
-</bpmn:definitions>
+<ns0:definitions xmlns:ns0="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:ns3="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions" targetNamespace="https://example.org/cable-acceptance">
+  <ns0:process id="Process" name="Регистрация испытаний партии кабеля и решение о приёмке" isExecutable="false">
+    <ns0:laneSet id="LaneSet">
+      <ns0:lane id="master" name="Мастер производства">
+        <ns0:flowNodeRef>start</ns0:flowNodeRef>
+        <ns0:flowNodeRef>submit</ns0:flowNodeRef>
+      </ns0:lane>
+      <ns0:lane id="otk" name="Контролёр ОТК">
+        <ns0:flowNodeRef>check</ns0:flowNodeRef>
+        <ns0:flowNodeRef>docs</ns0:flowNodeRef>
+        <ns0:flowNodeRef>wait</ns0:flowNodeRef>
+        <ns0:flowNodeRef>hold</ns0:flowNodeRef>
+      </ns0:lane>
+      <ns0:lane id="lab" name="Лаборант">
+        <ns0:flowNodeRef>sample</ns0:flowNodeRef>
+        <ns0:flowNodeRef>measure</ns0:flowNodeRef>
+      </ns0:lane>
+      <ns0:lane id="system" name="Информационная система">
+        <ns0:flowNodeRef>validate</ns0:flowNodeRef>
+        <ns0:flowNodeRef>evaluate</ns0:flowNodeRef>
+        <ns0:flowNodeRef>make</ns0:flowNodeRef>
+      </ns0:lane>
+      <ns0:lane id="head" name="Уполномоченный ОТК">
+        <ns0:flowNodeRef>review</ns0:flowNodeRef>
+        <ns0:flowNodeRef>approve</ns0:flowNodeRef>
+        <ns0:flowNodeRef>fix</ns0:flowNodeRef>
+      </ns0:lane>
+      <ns0:lane id="store" name="Склад и производство">
+        <ns0:flowNodeRef>send</ns0:flowNodeRef>
+        <ns0:flowNodeRef>end</ns0:flowNodeRef>
+      </ns0:lane>
+    </ns0:laneSet>
+    <ns0:startEvent id="start" name="Партия готова">
+      <ns0:outgoing>Flow0</ns0:outgoing>
+    </ns0:startEvent>
+    <ns0:userTask id="submit" name="Передать партию и документы">
+      <ns0:incoming>Flow0</ns0:incoming>
+      <ns0:outgoing>Flow1</ns0:outgoing>
+    </ns0:userTask>
+    <ns0:userTask id="check" name="Проверить документы и план">
+      <ns0:incoming>Flow1</ns0:incoming>
+      <ns0:outgoing>Flow2</ns0:outgoing>
+    </ns0:userTask>
+    <ns0:exclusiveGateway id="docs" name="Документы полны?">
+      <ns0:incoming>Flow2</ns0:incoming>
+      <ns0:outgoing>Flow3</ns0:outgoing>
+      <ns0:outgoing>Flow5</ns0:outgoing>
+    </ns0:exclusiveGateway>
+    <ns0:userTask id="wait" name="Запросить уточнение">
+      <ns0:incoming>Flow3</ns0:incoming>
+      <ns0:outgoing>Flow4</ns0:outgoing>
+    </ns0:userTask>
+    <ns0:endEvent id="hold" name="Ожидание уточнения">
+      <ns0:incoming>Flow4</ns0:incoming>
+    </ns0:endEvent>
+    <ns0:userTask id="sample" name="Зарегистрировать образцы">
+      <ns0:incoming>Flow5</ns0:incoming>
+      <ns0:outgoing>Flow6</ns0:outgoing>
+    </ns0:userTask>
+    <ns0:userTask id="measure" name="Выполнить испытания и ввести результаты">
+      <ns0:incoming>Flow6</ns0:incoming>
+      <ns0:outgoing>Flow7</ns0:outgoing>
+      <ns0:incoming>Flow13</ns0:incoming>
+    </ns0:userTask>
+    <ns0:serviceTask id="validate" name="Проверить формат результатов">
+      <ns0:incoming>Flow7</ns0:incoming>
+      <ns0:outgoing>Flow8</ns0:outgoing>
+    </ns0:serviceTask>
+    <ns0:serviceTask id="evaluate" name="Сопоставить результаты с планом">
+      <ns0:incoming>Flow8</ns0:incoming>
+      <ns0:outgoing>Flow9</ns0:outgoing>
+    </ns0:serviceTask>
+    <ns0:serviceTask id="make" name="Сформировать проект протокола">
+      <ns0:incoming>Flow9</ns0:incoming>
+      <ns0:outgoing>Flow10</ns0:outgoing>
+    </ns0:serviceTask>
+    <ns0:userTask id="review" name="Проверить проект протокола">
+      <ns0:incoming>Flow10</ns0:incoming>
+      <ns0:outgoing>Flow11</ns0:outgoing>
+    </ns0:userTask>
+    <ns0:exclusiveGateway id="approve" name="Решение утверждено?">
+      <ns0:incoming>Flow11</ns0:incoming>
+      <ns0:outgoing>Flow12</ns0:outgoing>
+      <ns0:outgoing>Flow14</ns0:outgoing>
+    </ns0:exclusiveGateway>
+    <ns0:userTask id="fix" name="Вернуть на уточнение">
+      <ns0:incoming>Flow12</ns0:incoming>
+      <ns0:outgoing>Flow13</ns0:outgoing>
+    </ns0:userTask>
+    <ns0:userTask id="send" name="Передать протокол и статус">
+      <ns0:incoming>Flow14</ns0:incoming>
+      <ns0:outgoing>Flow15</ns0:outgoing>
+    </ns0:userTask>
+    <ns0:endEvent id="end" name="Результат передан">
+      <ns0:incoming>Flow15</ns0:incoming>
+    </ns0:endEvent>
+    <ns0:sequenceFlow id="Flow0" sourceRef="start" targetRef="submit" name="" />
+    <ns0:sequenceFlow id="Flow1" sourceRef="submit" targetRef="check" name="" />
+    <ns0:sequenceFlow id="Flow2" sourceRef="check" targetRef="docs" name="" />
+    <ns0:sequenceFlow id="Flow3" sourceRef="docs" targetRef="wait" name="Нет">
+      <ns0:conditionExpression xsi:type="bpmn:tFormalExpression">Нет</ns0:conditionExpression>
+    </ns0:sequenceFlow>
+    <ns0:sequenceFlow id="Flow4" sourceRef="wait" targetRef="hold" name="" />
+    <ns0:sequenceFlow id="Flow5" sourceRef="docs" targetRef="sample" name="Да">
+      <ns0:conditionExpression xsi:type="bpmn:tFormalExpression">Да</ns0:conditionExpression>
+    </ns0:sequenceFlow>
+    <ns0:sequenceFlow id="Flow6" sourceRef="sample" targetRef="measure" name="" />
+    <ns0:sequenceFlow id="Flow7" sourceRef="measure" targetRef="validate" name="" />
+    <ns0:sequenceFlow id="Flow8" sourceRef="validate" targetRef="evaluate" name="" />
+    <ns0:sequenceFlow id="Flow9" sourceRef="evaluate" targetRef="make" name="" />
+    <ns0:sequenceFlow id="Flow10" sourceRef="make" targetRef="review" name="" />
+    <ns0:sequenceFlow id="Flow11" sourceRef="review" targetRef="approve" name="" />
+    <ns0:sequenceFlow id="Flow12" sourceRef="approve" targetRef="fix" name="Нет">
+      <ns0:conditionExpression xsi:type="bpmn:tFormalExpression">Нет</ns0:conditionExpression>
+    </ns0:sequenceFlow>
+    <ns0:sequenceFlow id="Flow13" sourceRef="fix" targetRef="measure" name="" />
+    <ns0:sequenceFlow id="Flow14" sourceRef="approve" targetRef="send" name="Да">
+      <ns0:conditionExpression xsi:type="bpmn:tFormalExpression">Да</ns0:conditionExpression>
+    </ns0:sequenceFlow>
+    <ns0:sequenceFlow id="Flow15" sourceRef="send" targetRef="end" name="" />
+    <ns0:dataObject id="objects1Data" name="Изделие; партия; версия плана; правила; виды проверок" />
+    <ns0:dataObjectReference id="objects1" name="Изделие; партия; версия плана; правила; виды проверок" dataObjectRef="objects1Data" />
+    <ns0:dataObject id="objects2Data" name="Образцы; сотрудники; измерения" />
+    <ns0:dataObjectReference id="objects2" name="Образцы; сотрудники; измерения" dataObjectRef="objects2Data" />
+    <ns0:dataObject id="objects3Data" name="Протокол и решение ОТК" />
+    <ns0:dataObjectReference id="objects3" name="Протокол и решение ОТК" dataObjectRef="objects3Data" />
+    <ns0:association id="Assoc0" sourceRef="objects1" targetRef="check" associationDirection="One" />
+    <ns0:association id="Assoc1" sourceRef="measure" targetRef="objects2" associationDirection="One" />
+    <ns0:association id="Assoc2" sourceRef="review" targetRef="objects3" associationDirection="One" />
+  </ns0:process>
+  <ns0:collaboration id="Collaboration">
+    <ns0:participant id="Pool" name="Предприятие кабельного производства" processRef="Process" />
+  </ns0:collaboration>
+  <ns2:BPMNDiagram id="Diagram">
+    <ns2:BPMNPlane id="Plane" bpmnElement="Collaboration">
+      <ns2:BPMNShape id="Pool_di" bpmnElement="Pool" isHorizontal="true">
+        <ns3:Bounds x="10" y="55" width="1540" height="1060" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="master_di" bpmnElement="master" isHorizontal="true">
+        <ns3:Bounds x="40" y="55" width="1510" height="150" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="otk_di" bpmnElement="otk" isHorizontal="true">
+        <ns3:Bounds x="40" y="205" width="1510" height="190" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="lab_di" bpmnElement="lab" isHorizontal="true">
+        <ns3:Bounds x="40" y="395" width="1510" height="170" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="system_di" bpmnElement="system" isHorizontal="true">
+        <ns3:Bounds x="40" y="565" width="1510" height="230" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="head_di" bpmnElement="head" isHorizontal="true">
+        <ns3:Bounds x="40" y="795" width="1510" height="170" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="store_di" bpmnElement="store" isHorizontal="true">
+        <ns3:Bounds x="40" y="965" width="1510" height="150" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="start_di" bpmnElement="start">
+        <ns3:Bounds x="120" y="110" width="55" height="55" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="submit_di" bpmnElement="submit">
+        <ns3:Bounds x="260" y="105" width="200" height="70" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="check_di" bpmnElement="check">
+        <ns3:Bounds x="500" y="260" width="210" height="70" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="docs_di" bpmnElement="docs">
+        <ns3:Bounds x="770" y="245" width="160" height="100" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="wait_di" bpmnElement="wait">
+        <ns3:Bounds x="1030" y="260" width="190" height="70" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="hold_di" bpmnElement="hold">
+        <ns3:Bounds x="1330" y="270" width="55" height="55" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="sample_di" bpmnElement="sample">
+        <ns3:Bounds x="500" y="440" width="210" height="70" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="measure_di" bpmnElement="measure">
+        <ns3:Bounds x="780" y="440" width="230" height="70" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="validate_di" bpmnElement="validate">
+        <ns3:Bounds x="780" y="620" width="230" height="70" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="evaluate_di" bpmnElement="evaluate">
+        <ns3:Bounds x="490" y="620" width="240" height="70" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="make_di" bpmnElement="make">
+        <ns3:Bounds x="200" y="620" width="240" height="70" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="review_di" bpmnElement="review">
+        <ns3:Bounds x="200" y="840" width="240" height="70" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="approve_di" bpmnElement="approve">
+        <ns3:Bounds x="520" y="825" width="170" height="100" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="fix_di" bpmnElement="fix">
+        <ns3:Bounds x="820" y="845" width="190" height="70" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="send_di" bpmnElement="send">
+        <ns3:Bounds x="200" y="1000" width="240" height="70" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="end_di" bpmnElement="end">
+        <ns3:Bounds x="570" y="1005" width="55" height="55" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="objects1_di" bpmnElement="objects1">
+        <ns3:Bounds x="85" y="345" width="350" height="48" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="objects2_di" bpmnElement="objects2">
+        <ns3:Bounds x="1050" y="530" width="400" height="30" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="objects3_di" bpmnElement="objects3">
+        <ns3:Bounds x="1050" y="925" width="370" height="30" />
+      </ns2:BPMNShape>
+      <ns2:BPMNEdge id="Flow0_di" bpmnElement="Flow0">
+        <ns4:waypoint x="175" y="137.5" />
+        <ns4:waypoint x="260" y="140.0" />
+      </ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow1_di" bpmnElement="Flow1">
+        <ns4:waypoint x="460" y="140" />
+        <ns4:waypoint x="605" y="140" />
+        <ns4:waypoint x="605" y="260" />
+      </ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow2_di" bpmnElement="Flow2">
+        <ns4:waypoint x="710" y="295.0" />
+        <ns4:waypoint x="770" y="295.0" />
+      </ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow3_di" bpmnElement="Flow3">
+        <ns4:waypoint x="930" y="295.0" />
+        <ns4:waypoint x="1030" y="295.0" />
+      </ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow4_di" bpmnElement="Flow4">
+        <ns4:waypoint x="1220" y="295.0" />
+        <ns4:waypoint x="1330" y="297.5" />
+      </ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow5_di" bpmnElement="Flow5">
+        <ns4:waypoint x="850" y="345" />
+        <ns4:waypoint x="850" y="370" />
+        <ns4:waypoint x="605" y="370" />
+        <ns4:waypoint x="605" y="440" />
+      </ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow6_di" bpmnElement="Flow6">
+        <ns4:waypoint x="710" y="475.0" />
+        <ns4:waypoint x="780" y="475.0" />
+      </ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow7_di" bpmnElement="Flow7">
+        <ns4:waypoint x="895" y="510" />
+        <ns4:waypoint x="895" y="620" />
+      </ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow8_di" bpmnElement="Flow8">
+        <ns4:waypoint x="780" y="655" />
+        <ns4:waypoint x="730" y="655" />
+      </ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow9_di" bpmnElement="Flow9">
+        <ns4:waypoint x="490" y="655" />
+        <ns4:waypoint x="440" y="655" />
+      </ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow10_di" bpmnElement="Flow10">
+        <ns4:waypoint x="320" y="690" />
+        <ns4:waypoint x="320" y="840" />
+      </ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow11_di" bpmnElement="Flow11">
+        <ns4:waypoint x="440" y="875.0" />
+        <ns4:waypoint x="520" y="875.0" />
+      </ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow12_di" bpmnElement="Flow12">
+        <ns4:waypoint x="690" y="875.0" />
+        <ns4:waypoint x="820" y="880.0" />
+      </ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow13_di" bpmnElement="Flow13">
+        <ns4:waypoint x="1010" y="880" />
+        <ns4:waypoint x="1480" y="880" />
+        <ns4:waypoint x="1480" y="475" />
+        <ns4:waypoint x="1010" y="475" />
+      </ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow14_di" bpmnElement="Flow14">
+        <ns4:waypoint x="605" y="925" />
+        <ns4:waypoint x="605" y="950" />
+        <ns4:waypoint x="320" y="950" />
+        <ns4:waypoint x="320" y="1000" />
+      </ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow15_di" bpmnElement="Flow15">
+        <ns4:waypoint x="440" y="1035.0" />
+        <ns4:waypoint x="570" y="1032.5" />
+      </ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Assoc0_di" bpmnElement="Assoc0">
+        <ns4:waypoint x="435" y="369" /><ns4:waypoint x="450" y="369" /><ns4:waypoint x="450" y="330" /><ns4:waypoint x="500" y="300" /></ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Assoc1_di" bpmnElement="Assoc1">
+        <ns4:waypoint x="1010" y="490" /><ns4:waypoint x="1030" y="490" /><ns4:waypoint x="1030" y="545" /><ns4:waypoint x="1050" y="545" /></ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Assoc2_di" bpmnElement="Assoc2">
+        <ns4:waypoint x="440" y="875" /><ns4:waypoint x="760" y="935" /><ns4:waypoint x="1050" y="940" /></ns2:BPMNEdge>
+    </ns2:BPMNPlane>
+  </ns2:BPMNDiagram>
+</ns0:definitions>

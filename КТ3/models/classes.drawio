@@ -1,0 +1,361 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Модель предметной области — девять сущностей">
+    <mxGraphModel page="1" pageWidth="2120" pageHeight="1800">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Producth" value="Product" vertex="1" parent="1" style="rounded=0;align=center;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="80" y="100" width="560" height="42" />
+        </mxCell>
+        <mxCell id="Producta" value="- id: String&#10;- name: String" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="80" y="142" width="560" height="62" />
+        </mxCell>
+        <mxCell id="Productm" value="+ Product(row: Map&lt;String,Object&gt;)&#10;+ getId(): String&#10;+ getName(): String" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="80" y="204" width="560" height="87" />
+        </mxCell>
+        <mxCell id="Batchh" value="Batch" vertex="1" parent="1" style="rounded=0;align=center;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="780" y="100" width="560" height="42" />
+        </mxCell>
+        <mxCell id="Batcha" value="- id: String&#10;- product_id: String&#10;- plan_id: String&#10;- number: String" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="780" y="142" width="560" height="112" />
+        </mxCell>
+        <mxCell id="Batchm" value="+ Batch(row: Map&lt;String,Object&gt;)&#10;+ getId(): String&#10;+ getProductId(): String&#10;+ getPlanId(): String&#10;+ getNumber(): String" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="780" y="254" width="560" height="137" />
+        </mxCell>
+        <mxCell id="Sampleh" value="Sample" vertex="1" parent="1" style="rounded=0;align=center;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="1480" y="100" width="560" height="42" />
+        </mxCell>
+        <mxCell id="Samplea" value="- id: String&#10;- batch_id: String&#10;- number: String" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="1480" y="142" width="560" height="87" />
+        </mxCell>
+        <mxCell id="Samplem" value="+ Sample(row: Map&lt;String,Object&gt;)&#10;+ getId(): String&#10;+ getBatchId(): String&#10;+ getNumber(): String" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="1480" y="229" width="560" height="112" />
+        </mxCell>
+        <mxCell id="Planh" value="Plan" vertex="1" parent="1" style="rounded=0;align=center;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="80" y="620" width="560" height="42" />
+        </mxCell>
+        <mxCell id="Plana" value="- id: String&#10;- name: String&#10;- revision: String&#10;- document: String" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="80" y="662" width="560" height="112" />
+        </mxCell>
+        <mxCell id="Planm" value="+ Plan(row: Map&lt;String,Object&gt;)&#10;+ getId(): String&#10;+ getName(): String&#10;+ getRevision(): String&#10;+ getDocument(): String" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="80" y="774" width="560" height="137" />
+        </mxCell>
+        <mxCell id="PlanRequirementh" value="PlanRequirement" vertex="1" parent="1" style="rounded=0;align=center;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="780" y="620" width="560" height="42" />
+        </mxCell>
+        <mxCell id="PlanRequirementa" value="- plan_id: String&#10;- requirement_id: String&#10;- lower: double&#10;- upper: double&#10;- unit: String" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="780" y="662" width="560" height="137" />
+        </mxCell>
+        <mxCell id="PlanRequirementm" value="+ PlanRequirement(row: Map&lt;String,Object&gt;)&#10;+ getPlanId(): String&#10;+ getRequirementId(): String&#10;+ getLower(): double&#10;+ getUpper(): double&#10;+ getUnit(): String" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="780" y="799" width="560" height="162" />
+        </mxCell>
+        <mxCell id="Measurementh" value="Measurement" vertex="1" parent="1" style="rounded=0;align=center;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="1480" y="620" width="560" height="42" />
+        </mxCell>
+        <mxCell id="Measurementa" value="- id: String&#10;- sample_id: String&#10;- requirement_id: String&#10;- employee_id: String&#10;- value: double&#10;- unit: String&#10;- measured_at: String" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="1480" y="662" width="560" height="187" />
+        </mxCell>
+        <mxCell id="Measurementm" value="+ Measurement(row: Map&lt;String,Object&gt;)&#10;+ getId(): String&#10;+ getSampleId(): String&#10;+ getRequirementId(): String&#10;+ getEmployeeId(): String&#10;+ getValue(): double&#10;+ getUnit(): String&#10;+ getMeasuredAt(): String" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="1480" y="849" width="560" height="212" />
+        </mxCell>
+        <mxCell id="Protocolh" value="Protocol" vertex="1" parent="1" style="rounded=0;align=center;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="80" y="1180" width="560" height="42" />
+        </mxCell>
+        <mxCell id="Protocola" value="- id: String&#10;- batch_id: String&#10;- employee_id: String&#10;- decision: String&#10;- approved_at: String" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="80" y="1222" width="560" height="137" />
+        </mxCell>
+        <mxCell id="Protocolm" value="+ Protocol(row: Map&lt;String,Object&gt;)&#10;+ getId(): String&#10;+ getBatchId(): String&#10;+ getEmployeeId(): String&#10;+ getDecision(): String&#10;+ getApprovedAt(): String" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="80" y="1359" width="560" height="162" />
+        </mxCell>
+        <mxCell id="Employeeh" value="Employee" vertex="1" parent="1" style="rounded=0;align=center;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="780" y="1180" width="560" height="42" />
+        </mxCell>
+        <mxCell id="Employeea" value="- id: String&#10;- name: String&#10;- role: String" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="780" y="1222" width="560" height="87" />
+        </mxCell>
+        <mxCell id="Employeem" value="+ Employee(row: Map&lt;String,Object&gt;)&#10;+ getId(): String&#10;+ getName(): String&#10;+ getRole(): String&#10;+ canApprove(): boolean" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="780" y="1309" width="560" height="137" />
+        </mxCell>
+        <mxCell id="Requirementh" value="Requirement" vertex="1" parent="1" style="rounded=0;align=center;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="1480" y="1180" width="560" height="42" />
+        </mxCell>
+        <mxCell id="Requirementa" value="- id: String&#10;- name: String" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="1480" y="1222" width="560" height="62" />
+        </mxCell>
+        <mxCell id="Requirementm" value="+ Requirement(row: Map&lt;String,Object&gt;)&#10;+ getId(): String&#10;+ getName(): String" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="1480" y="1284" width="560" height="87" />
+        </mxCell>
+        <mxCell id="e0" value="1 : 0..*" edge="1" parent="1" source="Producth" target="Batchh" style="endArrow=none;html=0;fontSize=18;edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e1" value="1 : 0..*" edge="1" parent="1" source="Batchh" target="Sampleh" style="endArrow=none;html=0;fontSize=18;edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e2" value="1 : 0..*" edge="1" parent="1" source="Planh" target="Batchh" style="endArrow=none;html=0;fontSize=18;edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="360" y="530" />
+              <mxPoint x="1060" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3" value="1 : 0..*" edge="1" parent="1" source="Planh" target="PlanRequirementh" style="endArrow=none;html=0;fontSize=18;edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" value="1 : 0..*" edge="1" parent="1" source="Sampleh" target="Measurementh" style="endArrow=none;html=0;fontSize=18;edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5" value="1 : 0..*" edge="1" parent="1" source="Requirementh" target="PlanRequirementh" style="endArrow=none;html=0;fontSize=18;edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1400" y="1260" />
+              <mxPoint x="1400" y="1030" />
+              <mxPoint x="1060" y="1030" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" value="1 : 0..*" edge="1" parent="1" source="Requirementh" target="Measurementh" style="endArrow=none;html=0;fontSize=18;edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7" value="1 : 0..*" edge="1" parent="1" source="Employeeh" target="Measurementh" style="endArrow=none;html=0;fontSize=18;edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1430" y="1370" />
+              <mxPoint x="1430" y="1110" />
+              <mxPoint x="1620" y="1110" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8" value="1 : 0..*" edge="1" parent="1" source="Employeeh" target="Protocolh" style="endArrow=none;html=0;fontSize=18;edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e9" value="1 : 0..1" edge="1" parent="1" source="Batchh" target="Protocolh" style="endArrow=none;html=0;fontSize=18;edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="710" y="330" />
+              <mxPoint x="710" y="1110" />
+              <mxPoint x="360" y="1110" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Проверки, полномочия и приложение">
+    <mxGraphModel page="1" pageWidth="2120" pageHeight="1860">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Employeeh" value="Employee" vertex="1" parent="1" style="rounded=0;align=center;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="80" y="100" width="560" height="42" />
+        </mxCell>
+        <mxCell id="Employeea" value="- id, name, role: String" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="80" y="142" width="560" height="37" />
+        </mxCell>
+        <mxCell id="Employeem" value="+ Employee(row: Map&lt;String,Object&gt;)&#10;+ getId(), getName(), getRole(): String&#10;+ canApprove(): boolean" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="80" y="179" width="560" height="87" />
+        </mxCell>
+        <mxCell id="Approverh" value="Approver" vertex="1" parent="1" style="rounded=0;align=center;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="80" y="450" width="560" height="42" />
+        </mxCell>
+        <mxCell id="Approvera" value="" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="80" y="492" width="560" height="28" />
+        </mxCell>
+        <mxCell id="Approverm" value="+ Approver(row: Map&lt;String,Object&gt;)&#10;+ canApprove(): boolean" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="80" y="520" width="560" height="62" />
+        </mxCell>
+        <mxCell id="«interface» Checkh" value="«interface» Check" vertex="1" parent="1" style="rounded=0;align=center;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="780" y="100" width="560" height="42" />
+        </mxCell>
+        <mxCell id="«interface» Checka" value="" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="780" y="142" width="560" height="28" />
+        </mxCell>
+        <mxCell id="«interface» Checkm" value="+ test(row: Map&lt;String,Object&gt;): boolean" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="780" y="170" width="560" height="37" />
+        </mxCell>
+        <mxCell id="FormatCheckh" value="FormatCheck" vertex="1" parent="1" style="rounded=0;align=center;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="780" y="450" width="560" height="42" />
+        </mxCell>
+        <mxCell id="FormatChecka" value="" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="780" y="492" width="560" height="28" />
+        </mxCell>
+        <mxCell id="FormatCheckm" value="+ test(row: Map&lt;String,Object&gt;): boolean" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="780" y="520" width="560" height="37" />
+        </mxCell>
+        <mxCell id="LimitCheckh" value="LimitCheck" vertex="1" parent="1" style="rounded=0;align=center;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="1480" y="450" width="560" height="42" />
+        </mxCell>
+        <mxCell id="LimitChecka" value="- rule: PlanRequirement" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="1480" y="492" width="560" height="37" />
+        </mxCell>
+        <mxCell id="LimitCheckm" value="+ LimitCheck(rule: PlanRequirement)&#10;+ test(row: Map&lt;String,Object&gt;): boolean" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="1480" y="529" width="560" height="62" />
+        </mxCell>
+        <mxCell id="Dataseth" value="Dataset" vertex="1" parent="1" style="rounded=0;align=center;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="80" y="820" width="560" height="42" />
+        </mxCell>
+        <mxCell id="Dataseta" value="- tables: Map&lt;String,List&lt;Map&lt;String,Object&gt;&gt;&gt;&#10;- indexes: Map&lt;String,Map&lt;String,Map&lt;String,Object&gt;&gt;&gt;&#10;- entities: Map&lt;String,List&lt;Object&gt;&gt;" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="80" y="862" width="560" height="87" />
+        </mxCell>
+        <mxCell id="Datasetm" value="+ Dataset(input: Object)&#10;+ rows(table: String): List&lt;Map&lt;String,Object&gt;&gt;&#10;+ objects&lt;T&gt;(table: String, type: Class&lt;T&gt;): List&lt;T&gt;&#10;+ validateMeasurements(): List&lt;Integer&gt;&#10;- truthy(v: Object): boolean {static}&#10;- required(row: Map, fields: String): void {static}&#10;- fail(message: String): void {static}" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="80" y="949" width="560" height="187" />
+        </mxCell>
+        <mxCell id="ProtocolServiceh" value="ProtocolService" vertex="1" parent="1" style="rounded=0;align=center;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="1240" y="820" width="560" height="42" />
+        </mxCell>
+        <mxCell id="ProtocolServicea" value="- data: Dataset" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="1240" y="862" width="560" height="37" />
+        </mxCell>
+        <mxCell id="ProtocolServicem" value="+ ProtocolService(data: Dataset)&#10;+ evaluate(samples: List&lt;Sample&gt;,&#10;    rules: List&lt;PlanRequirement&gt;,&#10;    rows: List&lt;Measurement&gt;): List&lt;List&lt;String&gt;&gt;&#10;+ makeProtocol(batchId: String): Map&lt;String,Object&gt;" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="1240" y="899" width="560" height="137" />
+        </mxCell>
+        <mxCell id="Jsonh" value="Json" vertex="1" parent="1" style="rounded=0;align=center;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="80" y="1380" width="560" height="42" />
+        </mxCell>
+        <mxCell id="Jsona" value="- source: String; - offset: int&#10;- NUMBER: Pattern {static final}" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="80" y="1422" width="560" height="62" />
+        </mxCell>
+        <mxCell id="Jsonm" value="- Json(source: String)&#10;+ read(path: Path): Object {static}&#10;+ write(v: Object): String {static}&#10;- value(): Object; - string(): String&#10;- space(): void; - eat(c: char): boolean&#10;- error(): IllegalArgumentException" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="80" y="1484" width="560" height="162" />
+        </mxCell>
+        <mxCell id="Mainh" value="Main" vertex="1" parent="1" style="rounded=0;align=center;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="780" y="1380" width="560" height="42" />
+        </mxCell>
+        <mxCell id="Maina" value="" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="780" y="1422" width="560" height="28" />
+        </mxCell>
+        <mxCell id="Mainm" value="- Main()&#10;+ main(args: String[]): void {static}" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="780" y="1450" width="560" height="62" />
+        </mxCell>
+        <mxCell id="Verificationh" value="Verification" vertex="1" parent="1" style="rounded=0;align=center;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="1480" y="1380" width="560" height="42" />
+        </mxCell>
+        <mxCell id="Verificationa" value="- fixture: Path {static}" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="1480" y="1422" width="560" height="37" />
+        </mxCell>
+        <mxCell id="Verificationm" value="+ main(args: String[]): void {static}&#10;- fresh(): Map&lt;String,Object&gt; {static}&#10;- rows(d: Map, table: String): List&lt;Map&gt; {static}&#10;- check(name, change, proposal, status): void&#10;- invalid(name, change): void {static}&#10;- approve(d, employee, decision): void {static}" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="1480" y="1459" width="560" height="162" />
+        </mxCell>
+        <mxCell id="e0" value="" edge="1" parent="1" source="Approverh" target="Employeeh" style="endArrow=block;endFill=0;html=0;fontSize=18;edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e1" value="" edge="1" parent="1" source="FormatCheckh" target="«interface» Checkh" style="endArrow=block;endFill=0;dashed=1;html=0;fontSize=18;edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="830" y="340" />
+              <mxPoint x="980" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e2" value="" edge="1" parent="1" source="LimitCheckh" target="«interface» Checkh" style="endArrow=block;endFill=0;dashed=1;html=0;fontSize=18;edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1520" y="340" />
+              <mxPoint x="1140" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3" value="1   data   1" edge="1" parent="1" source="ProtocolServiceh" target="Dataseth" style="endArrow=none;html=0;fontSize=18;edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" value="создаёт" edge="1" parent="1" source="Dataseth" target="FormatCheckh" style="endArrow=open;dashed=1;html=0;fontSize=18;edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="550" y="720" />
+              <mxPoint x="830" y="720" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5" value="создаёт" edge="1" parent="1" source="ProtocolServiceh" target="LimitCheckh" style="endArrow=open;dashed=1;html=0;fontSize=18;edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" value="read / write" edge="1" parent="1" source="Mainh" target="Jsonh" style="endArrow=open;dashed=1;html=0;fontSize=18;edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7" value="makeProtocol" edge="1" parent="1" source="Mainh" target="ProtocolServiceh" style="endArrow=open;dashed=1;html=0;fontSize=18;edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1060" y="1300" />
+              <mxPoint x="1520" y="1300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Связи частей приложения">
+    <mxGraphModel page="1" pageWidth="2120" pageHeight="580">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Dataseth" value="Dataset" vertex="1" parent="1" style="rounded=0;align=center;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="60" y="100" width="560" height="42" />
+        </mxCell>
+        <mxCell id="Dataseta" value="" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="60" y="142" width="560" height="28" />
+        </mxCell>
+        <mxCell id="Datasetm" value="+ objects&lt;T&gt;(table, type): List&lt;T&gt;" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="60" y="170" width="560" height="37" />
+        </mxCell>
+        <mxCell id="Девять сущностейh" value="Девять сущностей" vertex="1" parent="1" style="rounded=0;align=center;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="800" y="100" width="560" height="42" />
+        </mxCell>
+        <mxCell id="Девять сущностейa" value="" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="800" y="142" width="560" height="28" />
+        </mxCell>
+        <mxCell id="Девять сущностейm" value="Product, Plan, Requirement, PlanRequirement&#10;Batch, Sample, Measurement, Employee, Protocol" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="800" y="170" width="560" height="62" />
+        </mxCell>
+        <mxCell id="LimitCheckh" value="LimitCheck" vertex="1" parent="1" style="rounded=0;align=center;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="60" y="330" width="560" height="42" />
+        </mxCell>
+        <mxCell id="LimitChecka" value="- rule: PlanRequirement" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="60" y="372" width="560" height="37" />
+        </mxCell>
+        <mxCell id="LimitCheckm" value="+ test(row: Map): boolean" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="60" y="409" width="560" height="37" />
+        </mxCell>
+        <mxCell id="PlanRequirementh" value="PlanRequirement" vertex="1" parent="1" style="rounded=0;align=center;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="800" y="330" width="560" height="42" />
+        </mxCell>
+        <mxCell id="PlanRequirementa" value="" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="800" y="372" width="560" height="28" />
+        </mxCell>
+        <mxCell id="PlanRequirementm" value="+ getLower(), getUpper(): double" vertex="1" parent="1" style="rounded=0;align=left;verticalAlign=top;spacing=7;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=20;fillColor=#ffffff;strokeColor=#333333;">
+          <mxGeometry as="geometry" x="800" y="400" width="560" height="37" />
+        </mxCell>
+        <mxCell id="e0" value="1   entities   0..*" edge="1" parent="1" source="Dataseth" target="Девять сущностейh" style="startArrow=diamond;startFill=1;endArrow=none;html=0;fontSize=18;edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e1" value="0..*   rule   1" edge="1" parent="1" source="LimitCheckh" target="PlanRequirementh" style="startArrow=diamond;startFill=0;endArrow=none;html=0;fontSize=18;edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

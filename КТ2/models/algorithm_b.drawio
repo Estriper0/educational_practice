@@ -122,7 +122,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="e11" value="Цикл окончен" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=16;endArrow=block;" edge="1" parent="1" source="nm" target="len">
+        <mxCell id="e11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=16;endArrow=block;" edge="1" parent="1" source="nm" target="len">
           <mxGeometry as="geometry" relative="1">
             <Array as="points">
               <mxPoint x="1160" y="590" />
@@ -179,7 +179,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="e20" value="Цикл окончен" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=16;endArrow=block;" edge="1" parent="1" source="nr" target="nsend">
+        <mxCell id="e20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=16;endArrow=block;" edge="1" parent="1" source="nr" target="nsend">
           <mxGeometry as="geometry" relative="1">
             <Array as="points">
               <mxPoint x="80" y="395" />
@@ -195,7 +195,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="e22" value="Цикл окончен" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=16;endArrow=block;" edge="1" parent="1" source="ns" target="out">
+        <mxCell id="e22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=16;endArrow=block;" edge="1" parent="1" source="ns" target="out">
           <mxGeometry as="geometry" relative="1">
             <Array as="points">
               <mxPoint x="30" y="295" />
@@ -208,7 +208,7 @@
             <Array as="points" />
           </mxGeometry>
         </mxCell>
-      </root>
+      <mxCell id="exitLabel0" value="Измерения перебраны" style="text;html=0;fontSize=15;align=left;" vertex="1" parent="1"><mxGeometry as="geometry" x="700" y="874" width="270" height="26" /></mxCell><mxCell id="exitLabel1" value="Требования перебраны" style="text;html=0;fontSize=15;align=left;" vertex="1" parent="1"><mxGeometry as="geometry" x="85" y="1450" width="270" height="26" /></mxCell><mxCell id="exitLabel2" value="Образцы перебраны" style="text;html=0;fontSize=15;align=left;" vertex="1" parent="1"><mxGeometry as="geometry" x="40" y="1572" width="270" height="26" /></mxCell></root>
     </mxGraphModel>
   </diagram>
 </mxfile>
