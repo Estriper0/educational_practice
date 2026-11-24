@@ -1,0 +1,282 @@
+[
+  {
+    "scenario": "original",
+    "result": "PASS",
+    "expected_error": false
+  },
+  {
+    "scenario": "out_of_range",
+    "result": "PASS",
+    "expected_error": false
+  },
+  {
+    "scenario": "missing",
+    "result": "PASS",
+    "expected_error": false
+  },
+  {
+    "scenario": "duplicate_pair",
+    "result": "PASS",
+    "expected_error": false
+  },
+  {
+    "scenario": "wrong_unit",
+    "result": "PASS",
+    "expected_error": false
+  },
+  {
+    "scenario": "value_0",
+    "result": "PASS",
+    "expected_error": false
+  },
+  {
+    "scenario": "value_10",
+    "result": "PASS",
+    "expected_error": false
+  },
+  {
+    "scenario": "value_-0.0001",
+    "result": "PASS",
+    "expected_error": false
+  },
+  {
+    "scenario": "value_10.0001",
+    "result": "PASS",
+    "expected_error": false
+  },
+  {
+    "scenario": "value_True",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "value_False",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "value_None",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "value_5",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "value_{}",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "value_[]",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "value_1e+300",
+    "result": "PASS",
+    "expected_error": false
+  },
+  {
+    "scenario": "no_table_products",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "not_list_products",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "no_table_plans",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "not_list_plans",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "no_table_requirements",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "not_list_requirements",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "no_table_plan_requirements",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "not_list_plan_requirements",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "no_table_batches",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "not_list_batches",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "no_table_samples",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "not_list_samples",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "no_table_employees",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "not_list_employees",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "no_table_measurements",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "not_list_measurements",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "no_table_protocols",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "not_list_protocols",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "duplicate_id_products",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "duplicate_id_plans",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "duplicate_id_requirements",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "duplicate_id_batches",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "duplicate_id_samples",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "duplicate_id_employees",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "duplicate_id_measurements",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "duplicate_rule",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "reversed_bounds",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "boolean_bound",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "no_samples",
+    "result": "PASS",
+    "expected_error": false
+  },
+  {
+    "scenario": "no_rules",
+    "result": "PASS",
+    "expected_error": false
+  },
+  {
+    "scenario": "bad_sample_fk",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "bad_plan_fk",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "missing_batch",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "approved",
+    "result": "PASS",
+    "expected_error": false
+  },
+  {
+    "scenario": "unauthorized",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "contradiction",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "rejected_approved",
+    "result": "PASS",
+    "expected_error": false
+  },
+  {
+    "scenario": "incomplete_approved",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "empty_approval_date",
+    "result": "PASS",
+    "expected_error": true
+  },
+  {
+    "scenario": "duplicate_protocol",
+    "result": "PASS",
+    "expected_error": true
+  }
+]
