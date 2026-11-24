@@ -12,6 +12,15 @@ public final class Verification {
         var d=fresh(); change.accept(d);
         var r=new ProtocolService(new Dataset(d)).makeProtocol("B1");
         if(!r.get("proposal").equals(proposal)||!r.get("status").equals(status)) throw new AssertionError(name);
+        if(!r.get("batch_id").equals("B1") || r.size()!=5) throw new AssertionError(name+": result fields");
+        List<List<String>> expectedIssues=switch(name) {
+            case "rejected", "unit" -> List.of(List.of("S1","R1","nonconformity"));
+            case "missing", "duplicate pair" -> List.of(List.of("S1","R1","missing_or_duplicate"));
+            default -> List.of();
+        };
+        if(!r.get("issues").equals(expectedIssues)) throw new AssertionError(name+": issue contents or order");
+        Object expectedApproval=rows(d,"protocols").isEmpty()?null:rows(d,"protocols").get(0);
+        if(!Objects.equals(r.get("approval"),expectedApproval)) throw new AssertionError(name+": approval");
         System.out.println("PASS "+name);
     }
     private static void invalid(String name,Consumer<Map<String,Object>> change) throws Exception {
