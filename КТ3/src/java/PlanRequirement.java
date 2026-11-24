@@ -12,6 +12,8 @@ public class PlanRequirement {
         this.lower = ((Number) row.get("lower")).doubleValue();
         this.upper = ((Number) row.get("upper")).doubleValue();
         this.unit = String.valueOf(row.get("unit"));
+        if (!Double.isFinite(lower) || !Double.isFinite(upper) || lower > upper)
+            throw new IllegalArgumentException("Invalid plan bounds");
     }
     public String getPlanId() { return plan_id; }
     public String getRequirementId() { return requirement_id; }

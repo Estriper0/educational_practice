@@ -50,6 +50,12 @@ public final class Verification {
         invalid("foreign key",d->rows(d,"measurements").get(0).put("sample_id","unknown"));
         invalid("reversed bounds",d->rows(d,"plan_requirements").get(0).put("lower",100));
         invalid("duplicate id",d->rows(d,"products").add(new LinkedHashMap<>(rows(d,"products").get(0))));
-        System.out.println("OK: 16 scenarios");
+        for(double upper:new double[]{0,Double.NaN}) {
+            boolean rejected=false;
+            try { new PlanRequirement(Map.of("plan_id","CP1","requirement_id","R1","lower",10,"upper",upper,"unit","Ohm")); }
+            catch(IllegalArgumentException e) { rejected=true; }
+            if(!rejected) throw new AssertionError("Constructor accepted invalid bounds");
+        }
+        System.out.println("OK: 18 scenarios");
     }
 }
